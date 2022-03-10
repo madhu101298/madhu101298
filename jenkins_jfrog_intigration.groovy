@@ -10,7 +10,7 @@ node {
     
         stage ('Artifactory configaration') {
         // Obtain an Artifactory server instance, defined in Jenkins --> Manage Jenkins --> Configure System:
-        Server = Artifactory.server 'JFROG_ARTIFACTORY'
+        server = Artifactory.server 'JFROG_ARTIFACTORY'
         
         //Tool name from jenkins Configuration
         rtMaven.tool = 'M3'
@@ -24,6 +24,6 @@ node {
     }
     
     stage ('Publish build Info') {
-        server publishBuildInfo buildInfo
+        server.publishBuildInfo buildInfo
     }
 }    
