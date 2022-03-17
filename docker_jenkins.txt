@@ -1,0 +1,13 @@
+1. docker volume create jenkins-data
+2. docker run --name madhu-jenkins --detach -p 50000:50000 -p 9876:8080 -v jenkins-data:/var/jenkins_home jenkins/jenkins:lts
+3. docker ps
+4. docker exec fbeb6a60b4e4  cat /var/jenkins_home/secrets/initialAdminPassword
+5. docker stop fbeb6a60b4e4
+6. docker ps
+7. docker start madhu-jenkins
+8. docker ps
+9. docker login
+10. docker image ls
+11. docker commit fbeb6a60b4e4  madhu-jenkins:v1
+12. docker image tag madhu-jenkins:v1 madhumati9900/madhu-jenkins:v1
+13. docker image push madhumati9900/madhu-jenkins:v1
