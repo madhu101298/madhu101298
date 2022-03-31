@@ -37,9 +37,16 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+
+# In the output, you can see the kubeadm join command and a unique token that you will run on the worker node and all other worker nodes that you want to join onto this cluster. Next, copy-paste this command as you will use it later in the worker node.
+
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 sudo ufw allow 6443
 sudo ufw allow 6443/tcp
 
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
+kubectl get pods --all-namespaces
+kubectl get componentstatus
