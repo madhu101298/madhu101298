@@ -38,3 +38,5 @@ sudo systemctl restart docker
 
 sudo ufw allow 6443
 sudo ufw allow 6443/tcp
+# Please copy below command from the output of pod network initialization
+sudo kubeadm join 127.0.0.188:6443 --token u81y02.91gqwkxx6rnhnnly --discovery-token-ca-cert-hash sha256:4482ab1c66bf17992ea02c1ba580f4af9f3ad4cc37b24f189db34d6e3fe95c2d
